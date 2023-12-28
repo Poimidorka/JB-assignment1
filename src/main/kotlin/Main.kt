@@ -1,16 +1,21 @@
 package org.example
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, $name!")
+import org.example.engine.Engine
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+//TIP To compress input <b>string compress</b>,
+//to decompress input <b>string decompress</b>
+fun main() {
+    val e = Engine()
+    var line = readlnOrNull()
+    while (line != null) {
+        val strings = line.split(" ")
+        val string = strings[0]
+        val command = strings[1]
+        when (command) {
+            "compress" -> println(e.compress(string).feedback)
+            "decompress" -> println(e.decompress(string).feedback)
+            else -> println("Bad input, the second string should be compress or decompress only")
+        }
+        line = readlnOrNull()
     }
 }
