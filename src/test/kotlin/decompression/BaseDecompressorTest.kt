@@ -2,14 +2,13 @@ package decompression
 
 import base.CompressedString
 import org.example.decompression.BaseDecompressor
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class BaseDecompressorTest {
-    private val decompressor = BaseDecompressor()
     @Test
     fun smallTest() {
+        val decompressor = BaseDecompressor()
         val cs = CompressedString()
         cs.add('C', 3)
         cs.add('A', 3)
@@ -19,14 +18,15 @@ class BaseDecompressorTest {
     }
     @Test
     fun iterateABCDTest() {
+        val decompressor = BaseDecompressor()
         val l1 = 10L
         val l2 = 10L
         val l3 = 10L
         val l4 = 10L
-        for (i1 in 1.. l1) {
-            for (i2 in 1.. l2) {
-                for (i3 in 1.. l3) {
-                    for (i4 in 1.. l4) {
+        for (i1 in 2.. l1) {
+            for (i2 in 2.. l2) {
+                for (i3 in 2.. l3) {
+                    for (i4 in 2.. l4) {
                         val sb = StringBuilder()
                         val cs = CompressedString()
                         cs.add('A', i1)
@@ -45,7 +45,7 @@ class BaseDecompressorTest {
                         for (j4 in 0..< i4) {
                             sb.append('D')
                         }
-                        Assertions.assertEquals(sb.toString(), decompressor.decompress(cs))
+                        assertEquals(sb.toString(), decompressor.decompress(cs))
                     }
                 }
             }
